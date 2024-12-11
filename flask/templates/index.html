@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Informasi BUMN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Informasi BUMN</h1>
+        </header>
+        <main>
+            <form method="POST" class="form-classic">
+                <label for="bumn_name">Masukkan Nama Instansi:</label>
+                <input type="text" id="bumn_name" name="bumn_name" placeholder="Contoh: PT Telkom">
+                <button type="submit">Cari</button>
+            </form>
+
+            {% if bumn_info %}
+            <div class="result">
+                <h2>Hasil:</h2>
+                <p><strong>Deskripsi:</strong> {{ bumn_info.deskripsi }}</p>
+                {% if bumn_info.sektor %}
+                <p><strong>Sektor:</strong> {{ bumn_info.sektor }}</p>
+                <p><strong>Pendapatan:</strong> {{ bumn_info.pendapatan }}</p>
+                <p><strong>Jumlah Karyawan:</strong> {{ bumn_info.jumlah_karyawan }}</p>
+                {% endif %}
+            </div>
+            {% endif %}
+        </main>
+        <footer>
+            <p>&copy; Data Berikut Hanyalah contoh</p>
+        </footer>
+    </div>
+</body>
+</html>
